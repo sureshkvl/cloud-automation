@@ -1,0 +1,19 @@
+#!/bin/bash
+apt-get update 
+apt-get install -y --force-yes  git unzip python-dev libffi-dev libssl-dev libxml2-dev libxslt1-dev zlib1g-dev python-pip software-properties-common
+apt-add-repository ppa:ansible/ansible
+apt-get update
+apt-get install -y --force-yes ansible
+
+#install robotframework
+pip install robotframework
+
+#install terraform
+cd /tmp/files/
+unzip /tmp/files/terraform_0.11.11_linux_amd64.zip
+mv /tmp/files/terraform /usr/bin/.
+
+#clean
+apt-get -y autoremove 
+apt-get -y clean 
+rm -rf /root/.cache
