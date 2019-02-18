@@ -13,6 +13,8 @@ cd /tmp/files/
 unzip /tmp/files/terraform_0.11.11_linux_amd64.zip
 mv /tmp/files/terraform /usr/bin/.
 
+tar xvzf /tmp/files/openstack_plugin.tar.gz /opt/.
+
 #clean
 apt-get -y autoremove 
 apt-get -y clean 
