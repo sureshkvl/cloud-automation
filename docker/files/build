@@ -5,8 +5,10 @@ apt-add-repository ppa:ansible/ansible
 apt-get update
 apt-get install -y --force-yes ansible
 
-#install robotframework
+#install robotframework, python-openstackclient
 pip install robotframework
+pip install python-openstackclient
+
 
 #install terraform
 cd /tmp/files/

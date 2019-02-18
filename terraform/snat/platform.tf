@@ -2,7 +2,7 @@ provider "openstack" {
   user_name   = "demo"
   tenant_name = "demo"
   password    = "contrail123"
-  auth_url    =  "http://84.39.42.24/identity"
+  auth_url    =  "http://10.0.1.3/identity"
 }
 
 

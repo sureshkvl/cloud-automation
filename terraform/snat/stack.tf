@@ -3,8 +3,43 @@ resource "openstack_compute_instance_v2" "vm1" {
   image_id        = "${var.image_id}"
   flavor_id       = "${var.flavor_id}"
   key_pair        = "testkey"
-  security_groups = ["default"]
+  security_groups = ["sg1"]
   network {
-    uuid = "3dc195e9-1f6f-418f-9661-8ed9e540de81"
+    uuid = "7eaea1d9-5499-4fae-b230-1703c33fb307"
   }
 }
+
+resource "openstack_networking_floatingip_v2" "fip_1" {
+  pool = "public"
+}
+
+
+resource "openstack_compute_floatingip_associate_v2" "fip_1" {
+  floating_ip = "${openstack_networking_floatingip_v2.fip_1.address}"
+  instance_id = "${openstack_compute_instance_v2.vm1.id}"
+}
+
+
+
+resource "openstack_compute_instance_v2" "vm2" {
+  name            = "vm2"
+  image_id        = "${var.image_id}"
+  flavor_id       = "${var.flavor_id}"
+  key_pair        = "testkey"
+  security_groups = ["sg1"]
+  network {
+    uuid = "7eaea1d9-5499-4fae-b230-1703c33fb307"
+  }
+}
+
+resource "openstack_networking_floatingip_v2" "fip_2" {
+  pool = "public"
+}
+
+
+resource "openstack_compute_floatingip_associate_v2" "fip_2" {
+  floating_ip = "${openstack_networking_floatingip_v2.fip_2.address}"
+  instance_id = "${openstack_compute_instance_v2.vm2.id}"
+}
+
+
