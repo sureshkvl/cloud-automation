@@ -1,6 +1,6 @@
 #!/bin/bash
 apt-get update 
-apt-get install -y --force-yes  git unzip python-dev libffi-dev libssl-dev libxml2-dev libxslt1-dev zlib1g-dev python-pip software-properties-common
+apt-get install -y --force-yes  vim git unzip python-dev libffi-dev libssl-dev libxml2-dev libxslt1-dev zlib1g-dev python-pip software-properties-common
 apt-add-repository ppa:ansible/ansible
 apt-get update
 apt-get install -y --force-yes ansible
@@ -18,6 +18,11 @@ mv /tmp/files/terraform /usr/bin/.
 #install the openstack terraform plugins
 tar xvzf openstack_plugin.tar.gz 
 mv  linux_amd64 /opt/openstack_plugin
+
+#install the terraform inventory
+tar xvzf terraform-inventory_linux_x64.tar.gz
+mv terraform-inventory /usr/bin/.
+
 
 #clean
 apt-get -y autoremove 
