@@ -1,17 +1,17 @@
 provider "openstack" {
   user_name   = "demo"
   tenant_name = "demo"
-  password    = "contrail123"
-  auth_url    =  "http://10.0.1.3/identity"
+  password    = "openstack123"
+  auth_url    = "http://10.0.1.8:5000/v2.0"
 }
 
 
 variable public_pool_id {
-  default = "a8bf4b85-e5d2-4a69-8af4-bbc6b1eca38c"
+  default = "2d7d8023-3bcf-4b76-9c28-40a8d290d8fd"
 }
 
 variable image_id {
-  default = "e7c2c088-1503-4f29-91f8-84effdb3771d"
+  default = "0f173088-24d2-47f4-9ff2-b1bab5030c3b"
 }
 
 variable flavor_id {

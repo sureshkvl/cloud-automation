@@ -1,0 +1,48 @@
+---
+- name: "Infra Orchestration"
+  hosts: vm1
+  gather_facts: false
+  become: true
+  connection: local
+
+  tasks:
+  - name: deploy infra
+    terraform:
+      project_path: '/opt/stack/cloud-automation/terraform/snat'
+      lock: true
+      state: present
+
+
+  - name: "testing"
+    hosts: vm2
+    sudo: yes
+
+  tasks:
+  - name: Install apache
+    apt:
+      update_cache: true
+    apt:
+      name: apache2
+      state: present
+
+- name: "testing"
+  hosts: vm1
+  sudo: yes
+
+
+  tasks:
+  - name: query
+    shell: "curl 192.168.1.4"
+    register: output
+
+
+
+
+  
+
+
+  - name: delete infra
+    terraform:
+      project_path: '/opt/stack/cloud-automation/terraform/snat'
+      lock: true
+      state: absent

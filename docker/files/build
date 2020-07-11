@@ -1,6 +1,6 @@
 #!/bin/bash
 apt-get update 
-apt-get install -y --force-yes  vim git unzip python-dev libffi-dev libssl-dev libxml2-dev libxslt1-dev zlib1g-dev python-pip software-properties-common
+apt-get install -y --force-yes  vim git unzip python-dev libffi-dev libssl-dev libxml2-dev libxslt1-dev zlib1g-dev python-pip software-properties-common jq
 apt-add-repository ppa:ansible/ansible
 apt-get update
 apt-get install -y --force-yes ansible

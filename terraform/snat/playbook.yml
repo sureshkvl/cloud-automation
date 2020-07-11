@@ -1,0 +1,23 @@
+---
+- name: "testing"
+  hosts: vm2
+  sudo: yes
+
+  tasks:
+  - name: Install apache
+    apt:
+      update_cache: true
+    apt:
+      name: apache2
+      state: present
+
+- name: "testing"
+  hosts: vm1
+  sudo: yes
+
+
+  tasks:
+  - name: query
+    shell: "curl 192.168.1.4"
+    register: output
+
